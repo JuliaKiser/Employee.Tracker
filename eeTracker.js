@@ -88,6 +88,7 @@ function startTracking() {
 
 // Creating functions for Each Answer
 
+// function to display everything
 function displayAllInfo() {
     connection.query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary FROM employee JOIN role on employee.role_id = role.id JOIN department ON role.department_id = department.id;", function (err, res) {
         if (err) throw err;
@@ -96,6 +97,7 @@ function displayAllInfo() {
     })
 }
 
+// function to view all employees
 function viewAllEmployees() {
     connection.query("SELECT * FROM employee", function (err, res) {
         if (err) throw err;
@@ -104,6 +106,7 @@ function viewAllEmployees() {
     })
 }
 
+// function to view all departments
 function viewAllbyDept() {
     connection.query("SELECT * FROM department.name", function (err, res) {
         if (err) throw err;
@@ -112,6 +115,7 @@ function viewAllbyDept() {
     });
 }
 
+// function to view all employees by manager 
 function viewAllbyManager() {
     connection.query("SELECT * FROM employee.manager_id", function (err, res) {
         if (err) throw err;
@@ -120,6 +124,7 @@ function viewAllbyManager() {
     });
 }
 
+// function to add an employee
 function addEmployee() {
     console.log("Follow prompts to add new employee:\n");
     inquirer
@@ -198,6 +203,8 @@ function addEmployee() {
         }
       });
   }
+
+//   function to remove an employee
   function removeEmployee() {
     console.log("Follow prompt to delete Employee: \n");
     inquirer
@@ -223,3 +230,91 @@ function addEmployee() {
         );
       });
   }
+
+//   function to update employee role
+  function updateEmployeeRole() {
+    console.log("Follow prompts to update Role: \n");
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          message: "Enter employee's id:",
+          name: "employee_id",
+        },
+      ])
+      .then(function (answer) {
+        const employeeId = answer.employee_id;
+        if(employeeId){
+        inquirer
+          .prompt([
+            {
+              type: "list",
+              message: "Enter employee new role:",
+              choices: [
+                "Director",
+                "Finance/Dept Manager",
+                "Team Manager",
+                "Representative",
+                "Sales Support",
+                "Human Resources"
+              ],
+              name: "role_type",
+            },
+            {
+              type: "input",
+              message: "Enter new salary:",
+              name: "salary",
+            },
+            {
+              type: "input",
+              message: "Enter department ID:",
+              name: "dept_id",
+            },
+          ])
+          .then(function (answer) {
+            const roleType = answer.role_type;
+            const salary = answer.salary;
+            const deptId = answer.dept_id;
+  
+            var query = connection.query(
+              "UPDATE role SET ? WHERE ?",
+              [
+                {
+                  title: roleType,
+                  salary: salary,
+                  department_id: deptId,
+                },
+                {
+                  id: employeeId,
+                },
+              ],
+              function (err, res) {
+                if (err) throw err;
+                console.log(res.affectedRows + " Role updated!\n");
+                // Call deleteRole AFTER the UPDATE completes
+                viewRole();
+                //deleteRole();
+              }
+            );
+          });
+        }
+      });
+    }
+
+
+// Need to insert update manager
+
+// Function to view all roles
+    function viewAllRoles() {
+        connection.query("SELECT * FROM role", function (err, res) {
+          if (err) throw err;
+          console.table(res);
+          generateApp();
+        });
+      }
+
+// Function to delete role
+
+// Function to delete department
+
+// Function to exit app
