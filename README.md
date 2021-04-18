@@ -28,7 +28,7 @@ Video Link: https://youtu.be/hwqTYT7Mmvw
 
 ## Requirements
 
-* Functional application.
+* Functional application. And more.
 
 * GitHub repository with a unique name and a README describing the project.
 
