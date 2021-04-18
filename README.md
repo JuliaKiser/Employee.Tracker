@@ -21,7 +21,8 @@ Github Repo Link: https://github.com/JuliaKiser/Employee.Tracker
     * ![Database Schema](Assets/schema.png)
 
 ## Demo Video
-![Employee Tracker](./Assets/EETrack.gif)
+
+![Employee Tracker](Assets/EETrack.gif)
 
 Video Link: https://youtu.be/hwqTYT7Mmvw
 
