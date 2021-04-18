@@ -4,7 +4,7 @@ INSERT INTO department (name)
 VALUES ("Accounts Payable"),
 ("Human Resources"),
 ("IT"),
-("Customer Support")
+("Customer Support"),
 ("Payroll"),
 ("Time Collections"),
 ("Audit/Compliance");
