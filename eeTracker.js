@@ -30,6 +30,7 @@ function startTracking() {
                 choices: ["View All Employee Information",
                     "View All Employees",
                     "View All Employees by Departments",
+                    "Add Department",
                     "View All Employees by Manager",
                     "Add Employee",
                     "Remove Employee",
@@ -51,6 +52,9 @@ function startTracking() {
                     break;
                 case "View All Employees by Departments":
                     viewAllbyDept();
+                    break;
+                case "Add Department":
+                    addDepartment();
                     break;
                 case "View All Employees by Manager":
                     viewAllbyManager();
@@ -105,6 +109,34 @@ function viewAllbyDept() {
         console.table(res);
         startTracking();
     });
+}
+
+function addDepartment() {
+    console.log("Follow the prompt to add a new Department:\n");
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "What is the department name?",
+                name: "department",
+            },
+        ])
+        .then(function (answer) {
+            //console.log(answer.department);
+            var query = connection.query(
+                "INSERT INTO department SET ?",
+                {
+                    name: answer.department,
+                },
+                function (err, res) {
+                    if (err) throw err;
+                    console.log(
+                        res.affectedRows + " New Department has been successfully added!\n"
+                    );
+                    startTracking();
+                }
+            );
+        });
 }
 
 // function to view all employees by manager 
