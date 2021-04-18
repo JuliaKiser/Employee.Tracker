@@ -1,15 +1,15 @@
 # Employee Tracker
 
 ## Table of Contents
-1. [Portfolio Links](##Portfolio-Links)
-2. [Webpage Details](##Webpage-Details)
+1. [Application Links](##Application-Links)
+2. [Application Details](##Application-Details)
 3. [Demo Video](##Demo-Video)
 4. [Requirements](##Requirements)
 
-## Portfolio Links
-Deployed Link: https://juliakiser.github.io/Kiser_Portfolio/
+## Application Links
+Deployed Link: https://juliakiser.github.io/Employee.Tracker/
 
-Github Repo Link: https://github.com/JuliaKiser/Kiser_Portfolio
+Github Repo Link: https://github.com/JuliaKiser/Employee.Tracker
 
 
 ## Application Details
@@ -21,8 +21,9 @@ Github Repo Link: https://github.com/JuliaKiser/Kiser_Portfolio
     * ![Database Schema](Assets/schema.png)
 
 ## Demo Video
-![Kiser Portfolio](./assets/images/Updated.Portfolio.gif)
+![Employee Tracker](./Assets/EETrack.gif)
 
+Video Link: https://youtu.be/hwqTYT7Mmvw
 
 ## Requirements
 
